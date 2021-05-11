@@ -1,4 +1,6 @@
 <script lang="ts">
+  import ListItem from "./ListItem.svelte";
+
   let list: string[] = ["Eat breakfast", "Work out", "Meditate"];
   let newItem: string = "";
 
@@ -27,8 +29,7 @@
 
 <div class="listItems">
   {#each list as item, i}
-    <input bind:value={item} />
-    <button on:click={() => removeFromList(i)}>✖️</button>
+    <ListItem text={item} on:remove={() => removeFromList(i)} />
   {/each}
 </div>
 
@@ -39,30 +40,6 @@
     align-items: center;
     grid-auto-flow: row;
     row-gap: 12px;
-  }
-
-  .listItems input {
-    color: #6c6c6c;
-    font-size: 1.5em;
-    border: none;
-    outline: none;
-  }
-
-  .listItems :focus {
-    color: #1a1a1a;
-  }
-
-  .listItems button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    opacity: 0.2;
-  }
-
-  .listItems button:hover {
-    opacity: 1;
   }
 
   .newInputContainer {
