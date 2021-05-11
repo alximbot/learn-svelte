@@ -11,10 +11,6 @@
     list.splice(index, 1);
     list = list;
   }
-
-  function onKeypress(e: KeyboardEvent) {
-    if (e.key === "Enter") addToList();
-  }
 </script>
 
 <div class="newInputContainer">
@@ -22,7 +18,7 @@
     class="newInput"
     placeholder=""
     bind:value={newItem}
-    on:keypress={onKeypress}
+    on:keypress={(e) => e.key === "Enter" && addToList()}
   />
   {#if !!newItem}
     <button class="addButton" on:click={addToList}>Add</button>
