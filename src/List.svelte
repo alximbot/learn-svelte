@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade, fly } from "svelte/transition";
   import AddItemInput from "./AddItemInput.svelte";
   import ListItem from "./ListItem.svelte";
   import { todoList } from "./store";
@@ -27,8 +28,6 @@
 <style type="scss">
   .listItems {
     display: grid;
-    grid-template-columns: auto 30px;
-    align-items: center;
     grid-auto-flow: row;
     row-gap: 12px;
   }
