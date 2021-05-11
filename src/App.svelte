@@ -1,12 +1,10 @@
 <script lang="ts">
-  const list: string[] = ["Eat breakfast", "Work out", "Meditate"];
+  import List from "./List.svelte";
 </script>
 
 <main>
   <h1>Svelte TODO List</h1>
-  {#each list as item}
-    <h2>{item}</h2>
-  {/each}
+  <List />
 </main>
 
 <style>
