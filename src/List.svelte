@@ -1,4 +1,5 @@
 <script lang="ts">
+  import AddItemInput from "./AddItemInput.svelte";
   import ListItem from "./ListItem.svelte";
 
   let list: string[] = ["Eat breakfast", "Work out", "Meditate"];
@@ -15,17 +16,7 @@
   }
 </script>
 
-<div class="newInputContainer">
-  <input
-    class="newInput"
-    placeholder=""
-    bind:value={newItem}
-    on:keypress={(e) => e.key === "Enter" && addToList()}
-  />
-  {#if !!newItem}
-    <button class="addButton" on:click={addToList}>Add</button>
-  {/if}
-</div>
+<AddItemInput bind:value={newItem} on:addItem={() => addToList()} />
 
 <div class="listItems">
   {#each list as item, i}
@@ -40,38 +31,5 @@
     align-items: center;
     grid-auto-flow: row;
     row-gap: 12px;
-  }
-
-  .newInputContainer {
-    position: relative;
-    display: grid;
-    margin-bottom: 40px;
-
-    > * {
-      height: 100%;
-    }
-
-    .addButton {
-      cursor: pointer;
-      position: absolute;
-      right: 0;
-      width: 64px;
-      color: coral;
-      background: none;
-      border: none;
-    }
-
-    .newInput {
-      color: #1a1a1a;
-      font-size: 1.5em;
-      border: 1px solid rgba(coral, 0.3);
-      border-radius: 2px;
-      margin-right: 2px;
-
-      &:focus {
-        border: 1px solid coral;
-        outline: none;
-      }
-    }
   }
 </style>
