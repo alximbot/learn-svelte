@@ -1,18 +1,26 @@
 <script lang="ts">
+  import { onDestroy } from "svelte";
   import AddItemInput from "./AddItemInput.svelte";
   import ListItem from "./ListItem.svelte";
+  import { todoList } from "./store";
 
-  let list: string[] = ["Eat breakfast", "Work out", "Meditate"];
+  let list: string[];
+  const unsubscribe = todoList.subscribe((todos) => (list = todos));
+
+  onDestroy(() => {
+    unsubscribe();
+  });
+
   let newItem: string = "";
 
   function addToList() {
-    list = [...list, newItem];
+    todoList.set([...list, newItem]);
     newItem = "";
   }
 
   function removeFromList(index: number) {
     list.splice(index, 1);
-    list = list;
+    todoList.set(list);
   }
 </script>
 

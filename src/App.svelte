@@ -1,9 +1,20 @@
 <script lang="ts">
   import List from "./List.svelte";
+  import { todoList } from "./store";
+  import { onDestroy } from "svelte";
+
+  let list: string[];
+  const unsubscribe = todoList.subscribe((todos) => (list = todos));
+
+  onDestroy(() => {
+    unsubscribe();
+  });
+
+  $: title = list.length + " things TODO";
 </script>
 
 <main>
-  <h1>Svelte TODO List</h1>
+  <h1>{title}</h1>
   <List />
 </main>
 
