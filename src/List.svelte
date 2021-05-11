@@ -21,7 +21,9 @@
 
 <div class="listItems">
   {#each $todoList as item, i}
-    <ListItem text={item} on:remove={() => removeFromList(i)} />
+    <ListItem text={item} on:remove={() => removeFromList(i)}>
+      <span slot="beforeText">{i + 1}.</span>
+    </ListItem>
   {/each}
 </div>
 
@@ -30,5 +32,10 @@
     display: grid;
     grid-auto-flow: row;
     row-gap: 12px;
+
+    span {
+      color: #666666;
+      margin-right: 8px;
+    }
   }
 </style>
