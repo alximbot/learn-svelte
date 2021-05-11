@@ -1,12 +1,28 @@
 <script lang="ts">
   const list: string[] = ["Eat breakfast", "Work out", "Meditate"];
-  let newItem: string = "";
 </script>
 
-<input bind:value={newItem} />
+<div class="listInputs">
+  {#each list as item}
+    <input bind:value={item} />
+  {/each}
+</div>
 
-{#each list as item}
-  <h2>{item}</h2>
-{/each}
+<style>
+  .listInputs {
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 12px;
+  }
 
-<h2>{newItem}</h2>
+  input {
+    color: #6c6c6c;
+    font-size: 1.5em;
+    border: none;
+    outline: none;
+  }
+
+  input:focus {
+    color: #1a1a1a;
+  }
+</style>
