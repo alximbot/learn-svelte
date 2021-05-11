@@ -1,10 +1,16 @@
 <script lang="ts">
-  const list: string[] = ["Eat breakfast", "Work out", "Meditate"];
+  let list: string[] = ["Eat breakfast", "Work out", "Meditate"];
+  let newItem: string = "";
+
+  function addToList() {
+    list = [...list, newItem];
+    newItem = "";
+  }
 </script>
 
 <div class="newInputContainer">
-  <input class="newInput" placeholder="" />
-  <button class="addButton">Add</button>
+  <input class="newInput" placeholder="" bind:value={newItem} />
+  <button class="addButton" on:click={addToList}>Add</button>
 </div>
 
 <div class="listInputs">
