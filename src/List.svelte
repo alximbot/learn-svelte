@@ -6,6 +6,11 @@
     list = [...list, newItem];
     newItem = "";
   }
+
+  function removeFromList(index: number) {
+    list.splice(index, 1);
+    list = list;
+  }
 </script>
 
 <div class="newInputContainer">
@@ -13,28 +18,44 @@
   <button class="addButton" on:click={addToList}>Add</button>
 </div>
 
-<div class="listInputs">
-  {#each list as item}
+<div class="listItems">
+  {#each list as item, i}
     <input bind:value={item} />
+    <button on:click={() => removeFromList(i)}>✖️</button>
   {/each}
 </div>
 
 <style>
-  .listInputs {
+  .listItems {
     display: grid;
+    grid-template-columns: auto 30px;
+    align-items: center;
     grid-auto-flow: row;
     row-gap: 12px;
   }
 
-  .listInputs input {
+  .listItems input {
     color: #6c6c6c;
     font-size: 1.5em;
     border: none;
     outline: none;
   }
 
-  .listInputs :focus {
+  .listItems :focus {
     color: #1a1a1a;
+  }
+
+  .listItems button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    opacity: 0.2;
+  }
+
+  .listItems button:hover {
+    opacity: 1;
   }
 
   .newInputContainer {
