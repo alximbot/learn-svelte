@@ -33,7 +33,7 @@
   {/each}
 </div>
 
-<style>
+<style type="scss">
   .listItems {
     display: grid;
     grid-template-columns: auto 30px;
@@ -46,32 +46,32 @@
     position: relative;
     display: grid;
     margin-bottom: 40px;
-  }
 
-  .newInputContainer > * {
-    height: 100%;
-  }
+    > * {
+      height: 100%;
+    }
 
-  input.newInput {
-    color: #1a1a1a;
-    font-size: 1.5em;
-    border: 1px solid rgba(coral, 0.3);
-    border-radius: 2px;
-    margin-right: 2px;
-  }
+    .addButton {
+      cursor: pointer;
+      position: absolute;
+      right: 0;
+      width: 64px;
+      color: coral;
+      background: none;
+      border: none;
+    }
 
-  input.newInput:focus {
-    border: 1px solid coral;
-    outline: none;
-  }
+    .newInput {
+      color: #1a1a1a;
+      font-size: 1.5em;
+      border: 1px solid rgba(coral, 0.3);
+      border-radius: 2px;
+      margin-right: 2px;
 
-  .addButton {
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    width: 64px;
-    color: coral;
-    background: none;
-    border: none;
+      &:focus {
+        border: 1px solid coral;
+        outline: none;
+      }
+    }
   }
 </style>

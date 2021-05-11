@@ -8,16 +8,16 @@
 <input bind:value={text} />
 <button on:click={() => dispatch("remove")}>✖️</button>
 
-<style>
+<style type="scss">
   input {
     color: #6c6c6c;
     font-size: 1.5em;
     border: none;
     outline: none;
-  }
 
-  input:focus {
-    color: #1a1a1a;
+    &:focus {
+      color: #1a1a1a;
+    }
   }
 
   button {
@@ -27,9 +27,9 @@
     width: 40px;
     height: 40px;
     opacity: 0.2;
-  }
 
-  button:hover {
-    opacity: 1;
+    &:hover {
+      opacity: 1;
+    }
   }
 </style>
