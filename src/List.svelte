@@ -15,7 +15,9 @@
 
 <div class="newInputContainer">
   <input class="newInput" placeholder="" bind:value={newItem} />
-  <button class="addButton" on:click={addToList}>Add</button>
+  {#if !!newItem}
+    <button class="addButton" on:click={addToList}>Add</button>
+  {/if}
 </div>
 
 <div class="listItems">
@@ -59,8 +61,8 @@
   }
 
   .newInputContainer {
+    position: relative;
     display: grid;
-    grid-template-columns: auto 80px;
     margin-bottom: 40px;
   }
 
@@ -83,5 +85,11 @@
 
   .addButton {
     cursor: pointer;
+    position: absolute;
+    right: 0;
+    width: 64px;
+    color: coral;
+    background: none;
+    border: none;
   }
 </style>
