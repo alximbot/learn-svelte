@@ -1,3 +1,13 @@
 import { writable } from "svelte/store";
 
-export const todoList = writable(["Eat breakfast", "Work out", "Meditate"]);
+export type TodoListItem = { text: string; done?: boolean };
+
+export type TodoList = Array<TodoListItem>;
+
+export const todoList = writable<TodoList>([
+  {
+    text: "Eat breakfast",
+  },
+  { text: "Work out" },
+  { text: "Meditate" },
+]);
